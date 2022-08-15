@@ -4,15 +4,14 @@
 - [Requirements](#requirements)
     - [Node version](#node-version)
     - [Polygonscan api](#polygon-api-key)
-  - [Installation](#installation)
-  - [Deploying](#deploying)
+    - [Installation](#installation)
+- [Deploying](#deploying)
     - [Deploying to the mumbai network.](#deploying-to-the-mumbai-network)
-
-    - [Viewing your collection on Freechain Protocol](#viewing-your-collections-on-freechain)
-    - [Troubleshooting](#troubleshooting)
+- [Viewing your collection on Freechain Protocol](#viewing-your-collections-on-freechain)
+- [Troubleshooting](#troubleshooting)
       - [It doesn't compile!](#it-doesnt-compile)
       - [It doesn't deploy anything!](#it-doesnt-deploy-anything)
-    - [Minting tokens.](#minting-tokens)
+- [Minting tokens.](#minting-tokens)
 - [License](#license)
 
 
