@@ -1,5 +1,5 @@
-var marketplaceContract = artifacts.require("FreechainMarketplace");
+var marketplace = artifacts.require("FreechainMarketplace");
 
 module.exports = function(deployer){
-  deployer.deploy(marketplaceContract);
+  deployer.deploy(marketplace);
 }
