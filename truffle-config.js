@@ -52,7 +52,7 @@
      // Useful for deploying to a public network.
      // NB: It's important to wrap the provider as a function.
      matic: {
-      provider: () => new HDWalletProvider(mnemonic, `https://rpc-mumbai.maticvigil.com/v1/b0139f73933fa55b758f64d666e284634723347c`),
+      provider: () => new HDWalletProvider(mnemonic, `https://rpc-mumbai.maticvigil.com`),
       network_id: 80001,
       confirmations: 2,
       timeoutBlocks: 200,
@@ -111,6 +111,6 @@
     'truffle-plugin-verify'
   ],
   api_keys: {
-    polygonscan: '5MZBKWZZXPD8X4Z5RMKTGQXUSTXZCWS3I6'
+    polygonscan: 'JP3DPWUDBR5KEHHU42SVIWF2MDURCYMJTN'
   }
  };
