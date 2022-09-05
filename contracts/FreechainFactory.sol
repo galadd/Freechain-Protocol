@@ -11,7 +11,7 @@ contract FreechainFactory is FreechainArtist {
     mapping(uint256 => address) public indexToOwner; //index to ERC1155 owner address
 
     event ERC1155Created(address owner, address tokenContract); //emitted when ERC1155 token is deployed
-    event ERC1155Minted(address owner, address tokenContract, uint amount); //emmited when ERC1155 token is minted
+    event ERC1155Minted(address owner, address tokenContract, uint amount); //emitted when ERC1155 token is minted
 
     /*
     deployERC1155 - deploys a ERC1155 token with given parameters - returns deployed address
