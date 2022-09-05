@@ -5,7 +5,7 @@ pragma solidity ^0.8.4;
 @title - FreechainArtist 
 @notice - This contract is used to manage the artist signup and artist profile.
 @dev - The artist can signup and update their profile.
-@author - Freechain Developers
+@author - GbolahanAnon
  */
 
 contract FreechainArtist {
@@ -119,22 +119,6 @@ contract FreechainArtist {
     function getAllArtists() external view returns (Artist[] memory) {
         return artists;
     }
-    /**
-    @notice - Function to get a random artist
-     */
-    function getCreatorofTheDay() external view returns (Artist memory) {
-        return artists[randomArtistID];
-    }
-    
-
-
-
-
-
-
-
-
-
 
     ///MODIFIERS
 
