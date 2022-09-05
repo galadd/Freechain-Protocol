@@ -2,7 +2,6 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
-import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -12,10 +11,8 @@ import "./ERC1155Token.sol";
 /**
 @title - Freechain Marketplace is a decentralized marketplace for everyone to sell their artworks.
 @dev - Everyone can list their artworks to the marketplace and buyers can purchase them.
-@author - Freechain Developers
+@author - GbolahanAnon
  */
-
-///@notice Custom error messages for the FreechainMarketplace.sol
 
 ///@notice - raised when an address is not the owner of the ERC721 token.
 error Freechain__ERC721NotOwner();
@@ -36,7 +33,7 @@ contract FreechainMarketplace is Ownable {
     using EnumerableSet for EnumerableSet.UintSet;
     using Counters for Counters.Counter;
 
-    ERC1155Token public item;
+    ERC1155Token public nft;
 
     ///@notice - Counters for listings
     Counters.Counter private _listingId;
@@ -127,7 +124,7 @@ contract FreechainMarketplace is Ownable {
         uint256 _price
     )
         public
-        onlyNftOwner(_nftAddress, _tokenId)
+        /// onlyNftOwner(_nftAddress, _tokenId)
         HasApprovalItem(_nftAddress)
         NotListed(_nftAddress, _tokenId)
         returns (uint256)
@@ -174,13 +171,7 @@ contract FreechainMarketplace is Ownable {
         (bool success, ) = getOwner().call{value: royalty}("");
         (bool sellerSuccess, ) = listing.seller.call{value: sellerFunds}("");
         if (success && sellerSuccess) {
-            (listing.nftAddress).safeTransferFrom(
-                listing.seller, 
-                msg.sender, 
-                listing.tokenId, 
-                1, 
-                ""
-            );
+            nft.safeTransferFrom(listing.seller, msg.sender, listingId, listing.price, "");
         } else {
             revert();
         }
@@ -199,10 +190,10 @@ contract FreechainMarketplace is Ownable {
      */
     function cancelListing(uint256 listingId)
         external
-        onlyNftOwner(
+        /* onlyNftOwner(
             listingIdToListing[listingId].nftAddress,
             listingIdToListing[listingId].tokenId
-        )
+        )*/
     {
         require(
             listingIdToListing[listingId].state == State.OPEN,
@@ -293,7 +284,7 @@ contract FreechainMarketplace is Ownable {
         address owner = owner();
         return payable(owner);
     }
-
+/*
     /////////////////////MODIFIERS///////////////////////////////
     ///@notice - Modifier to check if the caller is the owner of the token.
     modifier onlyNftOwner(address _nftAddress, uint256 _tokenId) {
@@ -306,6 +297,7 @@ contract FreechainMarketplace is Ownable {
         //  Cont.
         _;
     }
+    /*
     /**
         @notice - Modiifier to check if the caller has approval for the ERC721 token
         @param _nftAddress - The address of the token
