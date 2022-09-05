@@ -39,7 +39,7 @@ contract ERC1155Token is ERC1155, Ownable {
         }
     }
     /*
-    sets our URI and makes the ERC1155 OpenSea compatible
+    sets our URI and makes the ERC1155 OpenSea/Freechain Marketplace compatible
     */
     function uri(uint256 _tokenid) override public view returns (string memory) {
         return string(
